@@ -1,0 +1,34 @@
+<project>
+ <properties architecture="1" fps="60" mouseToTouch="1" iosDevice="0" orientation="1" mouseTouchOrder="0" encryptAssets="0" touchToMouse="1" assetsOnly="0" logicalHeight="800" logicalWidth="480" encryptCode="0" scaleMode="3" autorotation="3" retinaDisplay="3" packageName="me.henrytao.mashballs">
+  <imageScales>
+   <scale scale="2" suffix="@2"/>
+  </imageScales>
+ </properties>
+ <folder name="fonts">
+  <file source="fonts/deftone stylus.ttf"/>
+ </folder>
+ <folder name="scenes">
+  <file source="scenes/OptionsScene.lua"/>
+  <file source="scenes/AboutScene.lua"/>
+  <file source="scenes/StartScene.lua"/>
+ </folder>
+ <folder name="classes">
+  <file source="classes/Settings.lua"/>
+  <file source="classes/dataSaver.lua"/>
+  <file source="classes/TextWrap.lua"/>
+  <file source="classes/easing.lua"/>
+  <file source="classes/scenemanager.lua"/>
+  <file source="classes/Button.lua"/>
+ </folder>
+ <folder name="images">
+  <file source="images/logo.png"/>
+  <file source="images/bg.jpg"/>
+  <file source="images/ball.png"/>
+  <file source="images/testbg.jpg"/>
+ </folder>
+ <file source="config.lua"/>
+ <file source="main.lua"/>
+ <file excludeFromExecution="1" source="test.lua"/>
+ <dependency to="classes/scenemanager.lua" from="config.lua"/>
+ <dependency to="classes/easing.lua" from="config.lua"/>
+</project>
