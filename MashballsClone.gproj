@@ -4,6 +4,9 @@
    <scale suffix="@2" scale="2"/>
   </imageScales>
  </properties>
+ <folder name="objects">
+  <file source="objects/MainBall.lua"/>
+ </folder>
  <folder name="texturepacks">
   <file source="texturepacks/LevelScene.txt"/>
   <file source="texturepacks/LevelScene.png"/>

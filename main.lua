@@ -1,3 +1,5 @@
+require "box2d"
+
 sceneManager = SceneManager.new({
 	['start'] = StartScene,
 	['about'] = AboutScene,

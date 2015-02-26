@@ -29,6 +29,48 @@ function LevelScene:init()
 			self:back()
 		end
 	end)
+	
+	self.bodies = {}
+	
+	self.world = b2.World.new(0, 9.8, true)
+	
+	--set up debug drawing
+	local debugDraw = b2.DebugDraw.new()
+	self.world:setDebugDraw(debugDraw)
+	self:addChild(debugDraw)
+	
+	self.mainBall = MainBall.new(self, 400, 200)
+	self:addChild(self.mainBall)
+	
+	local body = self.world:createBody({type = b2.STATIC_BODY})
+	body:setPosition(0, 0)
+	local chain = b2.ChainShape.new()
+	chain:createLoop(
+		0, 0,
+		conf.width, 0,
+		conf.width, conf.height,
+		0, conf.height
+	)
+	local fixture = body:createFixture({
+		shape = chain,
+		density = 1.0,
+		friction = 1,
+		restitution = 0.5
+	})
+	
+	self:addEventListener(Event.ENTER_FRAME, self.onEnterFrame, self)
+end
+
+function LevelScene:onEnterFrame()
+	if not self.paused then
+		self.world:step(1/60, 8, 3)
+		local body 
+		for i = 1, #self.bodies do
+			body = self.bodies[i]
+			body.object:setPosition(body:getPosition())
+			body.object:setRotation(math.deg(body:getAngle()))
+		end
+	end
 end
 
 function LevelScene:back()
