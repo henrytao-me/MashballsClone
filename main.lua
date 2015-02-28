@@ -4,7 +4,8 @@ sceneManager = SceneManager.new({
 	['start'] = StartScene,
 	['about'] = AboutScene,
 	['options'] = OptionsScene,
-	['level'] = LevelScene
+	['level'] = LevelScene,
+	["levelselect"] = LevelSelectScene
 })
 stage:addChild(sceneManager)
 

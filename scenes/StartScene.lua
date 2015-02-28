@@ -16,7 +16,7 @@ function StartScene:init()
 	local startButton = Button.new(startText)
 	startButton:setPosition((conf.width - startButton:getWidth())/2, conf.height - 70)
 	startButton:addEventListener('click', function() 
-		sceneManager:changeScene('level', conf.transitionTime, conf.transition, conf.easing)
+		sceneManager:changeScene("levelselect", conf.transitionTime, conf.transition, conf.easing)
 	end)
 	self:addChild(startButton)
 	

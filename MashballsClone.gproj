@@ -17,6 +17,7 @@
  </folder>
  <folder name="scenes">
   <file source="scenes/LevelScene.lua"/>
+  <file source="scenes/LevelSelectScene.lua"/>
   <file source="scenes/OptionsScene.lua"/>
   <file source="scenes/AboutScene.lua"/>
   <file source="scenes/StartScene.lua"/>
@@ -37,7 +38,7 @@
  </folder>
  <file source="config.lua"/>
  <file source="main.lua"/>
- <file excludeFromExecution="1" source="test.lua"/>
+ <file source="packs.lua"/>
  <dependency to="classes/easing.lua" from="config.lua"/>
  <dependency to="classes/scenemanager.lua" from="config.lua"/>
 </project>

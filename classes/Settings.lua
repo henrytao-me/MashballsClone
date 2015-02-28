@@ -2,7 +2,9 @@ Settings = Core.class()
 
 function Settings:init()
 	local settings = {
-		username = "Player"
+		username = "Player",
+		curPack = 1,
+    curLevel = 1
 	}
 	
 	self.isChanged = false
