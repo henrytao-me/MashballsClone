@@ -1,10 +1,11 @@
 <project>
- <properties assetsOnly="0" encryptAssets="0" touchToMouse="1" encryptCode="0" scaleMode="3" fps="60" packageName="me.henrytao.mashballs" logicalWidth="480" logicalHeight="800" autorotation="3" mouseTouchOrder="0" orientation="1" architecture="1" iosDevice="0" retinaDisplay="3" mouseToTouch="1">
+ <properties architecture="1" mouseToTouch="1" iosDevice="0" encryptAssets="0" touchToMouse="1" assetsOnly="0" encryptCode="0" mouseTouchOrder="0" fps="60" packageName="me.henrytao.mashballs" logicalWidth="480" logicalHeight="800" autorotation="3" scaleMode="3" orientation="1" retinaDisplay="3">
   <imageScales>
    <scale suffix="@2" scale="2"/>
   </imageScales>
  </properties>
  <folder name="objects">
+  <file source="objects/TouchBall.lua"/>
   <file source="objects/MainBall.lua"/>
  </folder>
  <folder name="texturepacks">
@@ -36,7 +37,7 @@
  </folder>
  <file source="config.lua"/>
  <file source="main.lua"/>
- <file source="test.lua" excludeFromExecution="1"/>
- <dependency from="config.lua" to="classes/scenemanager.lua"/>
- <dependency from="config.lua" to="classes/easing.lua"/>
+ <file excludeFromExecution="1" source="test.lua"/>
+ <dependency to="classes/easing.lua" from="config.lua"/>
+ <dependency to="classes/scenemanager.lua" from="config.lua"/>
 </project>

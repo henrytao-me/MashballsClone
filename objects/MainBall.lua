@@ -81,3 +81,12 @@ function MainBall:createBody ()
 	
 	table.insert(self.level.bodies, body)
 end
+
+function MainBall:smile()
+     local smileTexture = self.level.g:getTextureRegion("main2.png")
+     self.bitmap:setTextureRegion(smileTexture)
+     Timer.delayedCall(2000, function()
+       local normal = self.level.g:getTextureRegion("main1.png")
+       self.bitmap:setTextureRegion(normal)
+     end)
+end

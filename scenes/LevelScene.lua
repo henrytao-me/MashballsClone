@@ -42,6 +42,9 @@ function LevelScene:init()
 	self.mainBall = MainBall.new(self, 400, 200)
 	self:addChild(self.mainBall)
 	
+	local touch = TouchBall.new(self, 200, 100)
+	self:addChild(touch)	
+	
 	local body = self.world:createBody({type = b2.STATIC_BODY})
 	body:setPosition(0, 0)
 	local chain = b2.ChainShape.new()
@@ -59,6 +62,25 @@ function LevelScene:init()
 	})
 	
 	self:addEventListener(Event.ENTER_FRAME, self.onEnterFrame, self)
+	
+	--add collision event listener
+	self.world:addEventListener(Event.BEGIN_CONTACT, self.onBeginContact, self)
+end
+
+function LevelScene:onBeginContact(e)
+	--getting contact bodies
+     local fixtureA = e.fixtureA
+     local fixtureB = e.fixtureB
+     local bodyA = fixtureA:getBody()
+     local bodyB = fixtureB:getBody()
+     --check if this collision interests us
+     if bodyA.type and bodyB.type then
+       --check which bodies collide
+       if bodyA.type == "touch" and bodyB.type == "main" then
+			--smile
+         bodyB.object:smile()
+       end
+end
 end
 
 function LevelScene:onEnterFrame()
