@@ -1,0 +1,10 @@
+{
+	"includeRegex": false,
+  "excludeRegex": [
+  	"^\\.[^\\.]*", 
+  	".gproj$", 
+  	"LICENSE", 
+  	"README.md", 
+  	"^texturepacks/sources/", 
+  	"^texturepacks/LevelScene/"]
+}
