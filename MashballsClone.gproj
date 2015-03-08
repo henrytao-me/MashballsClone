@@ -1,33 +1,10 @@
 
 <project>
-  <properties fps="60" touchToMouse="1" iosDevice="0" assetsOnly="0" encryptAssets="0" logicalWidth="480" autorotation="3" encryptCode="0" packageName="me.henrytao.mashballs" scaleMode="3" logicalHeight="800" mouseTouchOrder="0" architecture="1" orientation="1" retinaDisplay="3" mouseToTouch="1">
+  <properties touchToMouse="1" encryptAssets="0" orientation="1" fps="60" logicalWidth="480" scaleMode="3" logicalHeight="800" autorotation="3" assetsOnly="0" architecture="1" retinaDisplay="3" encryptCode="0" mouseToTouch="1" mouseTouchOrder="0" iosDevice="0" packageName="me.henrytao.mashballs">
     <imageScales>
       <scale suffix="@2" scale="2"/>
     </imageScales>
   </properties>
-  <folder name="classes">
-    <file source="classes/Button.lua"/>
-    <file source="classes/GameManager.lua"/>
-    <file source="classes/Settings.lua"/>
-    <file source="classes/TextWrap.lua"/>
-    <file source="classes/dataSaver.lua"/>
-    <file source="classes/easing.lua"/>
-    <file source="classes/packs.lua"/>
-    <file source="classes/scenemanager.lua"/>
-  </folder>
-  <folder name="fonts">
-    <file source="fonts/deftone stylus.ttf"/>
-  </folder>
-  <folder name="images">
-    <file source="images/ball.png"/>
-    <file source="images/bg.jpg"/>
-    <file source="images/left.png"/>
-    <file source="images/level_locked.png"/>
-    <file source="images/level_unlocked.png"/>
-    <file source="images/logo.png"/>
-    <file source="images/right.png"/>
-    <file source="images/testbg.jpg"/>
-  </folder>
   <folder name="objects">
     <file source="objects/MainBall.lua"/>
     <file source="objects/TouchBall.lua"/>
@@ -39,11 +16,35 @@
     <file source="scenes/OptionsScene.lua"/>
     <file source="scenes/StartScene.lua"/>
   </folder>
+  <folder name="images">
+    <file source="images/ball.png"/>
+    <file source="images/bg.jpg"/>
+    <file source="images/left.png"/>
+    <file source="images/level_locked.png"/>
+    <file source="images/level_unlocked.png"/>
+    <file source="images/logo.png"/>
+    <file source="images/right.png"/>
+    <file source="images/testbg.jpg"/>
+  </folder>
+  <folder name="fonts">
+    <file source="fonts/deftone stylus.ttf"/>
+  </folder>
+  <folder name="classes">
+    <file source="classes/Button.lua"/>
+    <file source="classes/GameManager.lua"/>
+    <file source="classes/Settings.lua"/>
+    <file source="classes/TextWrap.lua"/>
+    <file source="classes/dataSaver.lua"/>
+    <file source="classes/easing.lua"/>
+    <file source="classes/packs.lua"/>
+    <file source="classes/scenemanager.lua"/>
+  </folder>
   <folder name="texturepacks">
     <file source="texturepacks/.DS_Store"/>
     <file source="texturepacks/LevelScene.png"/>
     <file source="texturepacks/LevelScene.txt"/>
   </folder>
+  <file source=".gideros"/>
   <file source="config.lua"/>
   <file source="dataSaver.lua"/>
   <file source="main.lua"/>

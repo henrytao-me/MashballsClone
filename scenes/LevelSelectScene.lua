@@ -31,6 +31,10 @@ function LevelSelectScene:init()
 	local grid = Sprite.new()
   self:addChild(grid)
 
+  if self.curPack == 1 and not gm:isUnlocked(1, 1) then
+     gm:unlockLevel(1, 1)
+	end
+
   local currentX, currentY = 120, 70 -- start coordinates
 	local step = 100 -- increase per level
 	local padding = 20 --padding between columns and rows
@@ -39,9 +43,22 @@ function LevelSelectScene:init()
 
 	for i = 1, packs[self.curPack].levels do
 		--create level image
-   	local level = Bitmap.new(Texture.new("images/level_locked.png", true))
-   	level:setPosition(currentX, currentY)
-   	grid:addChild(level)
+		local level
+		if gm:isUnlocked(self.curPack, i) then
+		 local bitmap =
+		   Bitmap.new(Texture.new("images/level_unlocked.png", true))
+		 level = Button.new(bitmap)
+		 level.id = i
+		 level:addEventListener("click", function(self)
+		   sets:set("curLevel", self.id)
+		   sceneManager:changeScene("level", conf.transitionTime,
+		     conf.transition, conf.easing)
+		 end, level)
+		else
+		 level = Bitmap.new(Texture.new("images/level_locked.png", true))
+		end
+		level:setPosition(currentX, currentY)
+		grid:addChild(level)
 
    	--add level number
 		local levelNumber = TextField.new(conf.fontMedium, i)

@@ -65,6 +65,9 @@ function LevelScene:init()
 	
 	--add collision event listener
 	self.world:addEventListener(Event.BEGIN_CONTACT, self.onBeginContact, self)
+
+	self.curPack = sets:get("curPack")
+	self.curLevel = sets:get("curLevel")
 end
 
 function LevelScene:onBeginContact(e)

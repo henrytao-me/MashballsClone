@@ -12,3 +12,5 @@ stage:addChild(sceneManager)
 sets = Settings.new()
 
 sceneManager:changeScene('start', 1, conf.transition, conf.easing)
+
+gm = GameManager.new()
