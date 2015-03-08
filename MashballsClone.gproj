@@ -11,6 +11,7 @@
     <file source="classes/TextWrap.lua"/>
     <file source="classes/dataSaver.lua"/>
     <file source="classes/easing.lua"/>
+    <file source="classes/packs.lua"/>
     <file source="classes/scenemanager.lua"/>
   </folder>
   <folder name="fonts">
@@ -38,13 +39,10 @@
     <file source="texturepacks/LevelScene.png"/>
     <file source="texturepacks/LevelScene.txt"/>
   </folder>
-  <file source="StartScene.lua"/>
   <file source="config.lua"/>
   <file source="dataSaver.lua"/>
   <file source="main.lua"/>
-  <file source="packs.lua"/>
   <dependency from="classes/Button.lua" to="config.lua"/>
   <dependency from="config.lua" to="classes/easing.lua"/>
   <dependency from="config.lua" to="classes/scenemanager.lua"/>
-  <dependency from="packs.lua" to="classes/Button.lua"/>
 </project>
