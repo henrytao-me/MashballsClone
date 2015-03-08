@@ -1,7 +1,7 @@
 {
 	"includeRegex": false,
   "excludeRegex": [
-  	"^\\\\.[^\\\\.]*", 
+  	"^\\.[^\\.]*", 
   	".gproj$", 
   	"LICENSE", 
   	"README.md", 
