@@ -39,11 +39,11 @@ function LevelScene:init()
 	self.world:setDebugDraw(debugDraw)
 	self:addChild(debugDraw)
 	
-	self.mainBall = MainBall.new(self, 400, 200)
-	self:addChild(self.mainBall)
+	-- self.mainBall = MainBall.new(self, 400, 200)
+	-- self:addChild(self.mainBall)
 	
-	local touch = TouchBall.new(self, 200, 100)
-	self:addChild(touch)	
+	-- local touch = TouchBall.new(self, 200, 100)
+	-- self:addChild(touch)	
 	
 	local body = self.world:createBody({type = b2.STATIC_BODY})
 	body:setPosition(0, 0)
@@ -68,6 +68,20 @@ function LevelScene:init()
 
 	self.curPack = sets:get("curPack")
 	self.curLevel = sets:get("curLevel")
+
+	self.level = dataSaver.load("levels/"..self.curPack.."-"..self.curLevel)
+  self.ballsLeft = 0
+
+  for i, value in ipairs(self.level) do
+	     if value.type == "main" then
+	       self.mainBall = MainBall.new(self, value.x, value.y)
+	       self:addChild(self.mainBall)
+	     elseif value.type == "touch" then
+	       local touch = TouchBall.new(self,  value.x, value.y)
+	       self:addChild(touch)
+	       self.ballsLeft = self.ballsLeft + 1
+	end end
+
 end
 
 function LevelScene:onBeginContact(e)
