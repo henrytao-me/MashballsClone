@@ -94,8 +94,13 @@ function LevelScene:onBeginContact(e)
      if bodyA.type and bodyB.type then
        --check which bodies collide
        if bodyA.type == "touch" and bodyB.type == "main" then
-			--smile
-         bodyB.object:smile()
+				--smile
+				   bodyB.object:smile()
+				   bodyA.type = nil
+				   self.ballsLeft = self.ballsLeft - 1
+				   if self.ballsLeft == 0 then
+				     self:completed()
+				   end
        end
 end
 end
@@ -163,4 +168,29 @@ end
 function LevelScene:closeMenu()
     self:removeChild(self.menu)
     self.paused = false
+end
+
+function LevelScene:completed()
+  self.curPack, self.curLevel = gm:getNextLevel(self.curPack,
+    self.curLevel, true)
+  --if curPack is nil it means we reached the end of the game
+  if self.curPack == nil then
+    local dialog = AlertDialog.new("Game Completed", "You have completed the game", "Yay")
+    dialog:addEventListener(Event.COMPLETE, function()
+      --goto main sceneManager
+      sceneManager:changeScene("start", conf.transitionTime,
+        conf.transition, conf.easing)
+    end)
+    dialog:show()
+  else
+  	-- we will store new pack and level ids in settings
+    sets:set("curPack", self.curPack)
+    sets:set("curLevel", self.curLevel)
+    local dialog = AlertDialog.new("Level Completed", "Continue to next Level", "OK")
+       dialog:addEventListener(Event.COMPLETE, function()
+         sceneManager:changeScene("level", conf.transitionTime,
+           conf.transition, conf.easing)
+       end)
+       dialog:show()
+     end
 end
