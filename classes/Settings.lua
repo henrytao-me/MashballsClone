@@ -4,7 +4,8 @@ function Settings:init()
 	local settings = {
 		username = "Player",
 		curPack = 1,
-    curLevel = 1
+    curLevel = 1,
+    music = true
 	}
 	
 	self.isChanged = false
