@@ -48,4 +48,59 @@ function OptionsScene:init()
 			sceneManager:changeScene("start", conf.transitionTime, conf.transition, conf.easing)
 		end 
 	end)
+
+
+	local musicText = TextField.new(conf.fontSmall, "Music: ")
+	musicText:setPosition(100, 250)
+	musicText:setTextColor(0xffff00)
+	self:addChild(musicText)
+	
+	local switchText = "Turn on"
+	if sets:get("music") then
+	 switchText = "Turn off"
+	end
+	local musicSwitch = TextField.new(conf.fontSmall, switchText)
+	musicSwitch:setTextColor(0x00ff00)
+
+	local musicButton = Button.new(musicSwitch)
+	musicButton:setPosition(conf.width - musicButton:getWidth() - 100,
+	250)
+	self:addChild(musicButton)
+	musicButton:addEventListener("click", function()
+	if sets:get("music") then
+	music:off()
+	 musicSwitch:setText("Turn on")
+	else
+	music:on()
+	 musicSwitch:setText("Turn off")
+	end
+	end)
+
+
+	local soundsText = TextField.new(conf.fontSmall, "Sounds: ")
+	soundsText:setPosition(100, 300)
+	soundsText:setTextColor(0xffff00)
+	self:addChild(soundsText)
+
+	local switchText = "Turn on"
+	if sets:get("sounds") then
+	 switchText = "Turn off"
+	end
+	local soundsSwitch = TextField.new(conf.fontSmall, switchText)
+	soundsSwitch:setTextColor(0x00ff00)
+	local soundsButton = Button.new(soundsSwitch)
+	soundsButton:setPosition(conf.width - soundsButton:getWidth() -
+	 100, 300)
+	self:addChild(soundsButton)
+
+	soundsButton:addEventListener("click", function()
+		if sets:get("sounds") then
+			sounds:off()
+			soundsSwitch:setText("Turn on")
+		else
+			sounds:on()
+			soundsSwitch:setText("Turn off")
+		end
+	end)
+
 end

@@ -5,7 +5,8 @@ function Settings:init()
 		username = "Player",
 		curPack = 1,
     curLevel = 1,
-    music = true
+    music = true,
+    sounds = true
 	}
 	
 	self.isChanged = false
@@ -21,6 +22,9 @@ function Settings:init()
 			self.isChanged = true
 		end
 	end
+
+
+	
 end
 
 function Settings:save()

@@ -10,6 +10,7 @@
     <file source="classes/GameManager.lua"/>
     <file source="classes/Music.lua"/>
     <file source="classes/Settings.lua"/>
+    <file source="classes/Sounds.lua"/>
     <file source="classes/TextWrap.lua"/>
     <file source="classes/dataSaver.lua"/>
     <file source="classes/easing.lua"/>

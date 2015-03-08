@@ -32,4 +32,25 @@ if sets:get("music") then
  music:on()
 end
 
+--sounds
+sounds = Sounds.new()
+--set up sound events
+--when sounds turn on
+sounds:addEventListener("soundsOn", function()
+ sets:set("sounds", true, true)
+end)
+--when sounds turn off
+sounds:addEventListener("soundsOff", function()
+ sets:set("sounds", false, true)
+end)
+--enable sounds if setting enabled
+if sets:get("sounds") then
+ sounds:on()
+end
+
+sounds:add("complete", "sounds/complete.wav")
+sounds:add("hit", "sounds/hit0.wav")
+sounds:add("hit", "sounds/hit1.wav")
+sounds:add("hit", "sounds/hit2.wav")
+sounds:add("hit", "sounds/hit3.wav")
 

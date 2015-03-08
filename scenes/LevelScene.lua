@@ -85,6 +85,7 @@ function LevelScene:init()
 end
 
 function LevelScene:onBeginContact(e)
+	sounds:play("hit")
 	--getting contact bodies
      local fixtureA = e.fixtureA
      local fixtureB = e.fixtureB
@@ -171,6 +172,8 @@ function LevelScene:closeMenu()
 end
 
 function LevelScene:completed()
+	sounds:play("complete")
+
   self.curPack, self.curLevel = gm:getNextLevel(self.curPack,
     self.curLevel, true)
   --if curPack is nil it means we reached the end of the game
