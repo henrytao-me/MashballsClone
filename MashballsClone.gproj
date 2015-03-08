@@ -5,6 +5,10 @@
       <scale suffix="@2" scale="2"/>
     </imageScales>
   </properties>
+  <folder name=".tmp">
+    <file source=".tmp/MashballsClone.md5"/>
+    <file source=".tmp/makefile"/>
+  </folder>
   <folder name="classes">
     <file source="classes/Button.lua"/>
     <file source="classes/Settings.lua"/>
@@ -20,7 +24,11 @@
   <folder name="images">
     <file source="images/ball.png"/>
     <file source="images/bg.jpg"/>
+    <file source="images/left.png"/>
+    <file source="images/level_locked.png"/>
+    <file source="images/level_unlocked.png"/>
     <file source="images/logo.png"/>
+    <file source="images/right.png"/>
     <file source="images/testbg.jpg"/>
   </folder>
   <folder name="objects">
@@ -39,10 +47,9 @@
     <file source="texturepacks/LevelScene.png"/>
     <file source="texturepacks/LevelScene.txt"/>
   </folder>
+  <file source=".gideros"/>
+  <file source=".gitignore"/>
   <file source="config.lua"/>
   <file source="dataSaver.lua"/>
   <file source="main.lua"/>
-  <dependency from="classes/Button.lua" to="config.lua"/>
-  <dependency from="config.lua" to="classes/easing.lua"/>
-  <dependency from="config.lua" to="classes/scenemanager.lua"/>
 </project>
