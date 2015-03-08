@@ -65,6 +65,7 @@ function LevelScene:init()
 	
 	--add collision event listener
 	self.world:addEventListener(Event.BEGIN_CONTACT, self.onBeginContact, self)
+	self.world:addEventListener(Event.POST_SOLVE, self.onPostSolve, self)
 
 	self.curPack = sets:get("curPack")
 	self.curLevel = sets:get("curLevel")
@@ -82,7 +83,44 @@ function LevelScene:init()
 	       self.ballsLeft = self.ballsLeft + 1
 	end end
 
+	local highScore = gm:getScore(self.curPack, self.curLevel)
+	local highScoreText = TextField.new(conf.fontSmall, "Highscore:"..highScore)
+	highScoreText:setTextColor(0xffff00)
+	highScoreText:setPosition(10, 25)
+	self:addChild(highScoreText)
+
+	self.score = 0
+	self.scoreText = TextField.new(conf.fontSmall, "Score: 0")
+	self.scoreText:setTextColor(0xffff00)
+	self.scoreText:setPosition(10, 55)
+	self:addChild(self.scoreText)
+
 end
+
+function LevelScene:updateScore(score)
+	self.score = self.score + score
+	self.scoreText:setText("Score: "..self.score)
+end
+
+function LevelScene:onPostSolve(e)
+     --getting contact bodies
+     local fixtureA = e.fixtureA
+     local fixtureB = e.fixtureB
+     local bodyA = fixtureA:getBody()
+     local bodyB = fixtureB:getBody()
+     --check if this collision interests us
+     if bodyA.type and bodyB.type then
+       --check which bodies collide
+       if bodyA.type == "touch" and bodyB.type == "main" then
+         --handle score here
+         bodyA.type = nil
+			   self:updateScore(math.floor(e.maxImpulse))
+			   self.ballsLeft = self.ballsLeft - 1
+			   if self.ballsLeft == 0 then
+			     self:completed()
+			   end
+       end
+end end
 
 function LevelScene:onBeginContact(e)
 	sounds:play("hit")
@@ -97,11 +135,6 @@ function LevelScene:onBeginContact(e)
        if bodyA.type == "touch" and bodyB.type == "main" then
 				--smile
 				   bodyB.object:smile()
-				   bodyA.type = nil
-				   self.ballsLeft = self.ballsLeft - 1
-				   if self.ballsLeft == 0 then
-				     self:completed()
-				   end
        end
 end
 end
@@ -173,6 +206,8 @@ end
 
 function LevelScene:completed()
 	sounds:play("complete")
+	local isNewHighScore = gm:setScore(self.curPack, self.curLevel,
+     self.score)
 
   self.curPack, self.curLevel = gm:getNextLevel(self.curPack,
     self.curLevel, true)

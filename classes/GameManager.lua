@@ -58,3 +58,26 @@ function GameManager:getNextLevel(pack, level, unlock)
        return nil, nil
      end
 end
+
+function GameManager:setScore(pack, level, score)
+ self:loadPack(pack)
+ if(self.packs[pack][level] == nil) then
+   self:createLevel(pack, level)
+ end
+ if(self.packs[pack][level].score < score)then
+   self.packs[pack][level].score = score
+   self.packs[pack][level].time = os.time()
+   self:save(pack)
+   return true
+ end
+ return false
+end
+
+function GameManager:getScore(pack, level)
+     self:loadPack(pack)
+     if(self.packs[pack][level] == nil) then
+     	self:createLevel(pack, level)
+     end
+     return self.packs[pack][level].score,
+       self.packs[pack][level].time
+end
