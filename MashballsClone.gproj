@@ -14,6 +14,7 @@
     <file source="classes/TextWrap.lua"/>
     <file source="classes/dataSaver.lua"/>
     <file source="classes/easing.lua"/>
+    <file source="classes/gtween.lua"/>
     <file source="classes/packs.lua"/>
     <file source="classes/scenemanager.lua"/>
   </folder>

@@ -136,8 +136,15 @@ function LevelScene:onBeginContact(e)
 				--smile
 				   bodyB.object:smile()
 				   bodyA.object:hit()
+				   self:shakeScreen()
        end
 end
+end
+
+function LevelScene:shakeScreen()
+ self:setPosition(-10, -10)
+ GTween.new(self, 0.5, {x = 0,y = 0}, {delay = 0, ease =
+   easing.outBounce })
 end
 
 function LevelScene:onEnterFrame()
