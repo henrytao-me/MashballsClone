@@ -56,8 +56,9 @@
   </folder>
   <folder name="texturepacks">
     <file source="texturepacks/.DS_Store"/>
-    <file source="texturepacks/LevelScene.png"/>
-    <file source="texturepacks/LevelScene.txt"/>
+    <file source="texturepacks/levelScene.png"/>
+    <file source="texturepacks/levelScene.tpproj"/>
+    <file source="texturepacks/levelScene.txt"/>
   </folder>
   <file source=".gideros"/>
   <file source="config.lua"/>

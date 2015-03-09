@@ -135,6 +135,7 @@ function LevelScene:onBeginContact(e)
        if bodyA.type == "touch" and bodyB.type == "main" then
 				--smile
 				   bodyB.object:smile()
+				   bodyA.object:hit()
        end
 end
 end
