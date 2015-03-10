@@ -95,6 +95,10 @@ function LevelScene:init()
 	self.scoreText:setPosition(10, 55)
 	self:addChild(self.scoreText)
 
+	self:addEventListener(Event.MOUSE_DOWN, self.onMouseDown, self)
+   self:addEventListener(Event.MOUSE_MOVE, self.onMouseMove, self)
+   self:addEventListener(Event.MOUSE_UP, self.onMouseUp, self)
+
 end
 
 function LevelScene:updateScore(score)
@@ -238,5 +242,27 @@ function LevelScene:completed()
            conf.transition, conf.easing)
        end)
        dialog:show()
+     end
+end
+
+function LevelScene:onMouseDown( event )
+     if self.mainBall.body then
+       if not self.paused then
+         self.magnetStarted = true
+         self.magnetX = event.x
+         self.magnetY = event.y
+end end
+end
+
+function LevelScene:onMouseMove( event )
+     if self.magnetStarted then
+				self.magnetX = event.x
+				self.magnetY = event.y
+  end
+end
+
+function LevelScene:onMouseUp( event )
+     if self.magnetStarted then
+       self.magnetStarted = false
      end
 end
