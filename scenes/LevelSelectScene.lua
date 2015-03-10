@@ -49,10 +49,15 @@ function LevelSelectScene:init()
 		   Bitmap.new(Texture.new("images/level_unlocked.png", true))
 		 level = Button.new(bitmap)
 		 level.id = i
-		 level:addEventListener("click", function(self)
-		   sets:set("curLevel", self.id)
-		   sceneManager:changeScene("level", conf.transitionTime,
-		     conf.transition, conf.easing)
+		 level.scene = self
+		 level:addEventListener(Event.MOUSE_UP, function(self, e)
+		 		if self:hitTestPoint(e.x, e.y) then
+		      if not self.scene.startX or math.abs(self.scene.startX - e.x) <= 10 then
+		      	sets:set("curLevel", self.id)
+					   sceneManager:changeScene("level", conf.transitionTime,
+					     conf.transition, conf.easing)
+		      end
+		    end
 		 end, level)
 		else
 		 level = Bitmap.new(Texture.new("images/level_locked.png", true))
