@@ -6,7 +6,7 @@ function LevelScene:init()
 	bg:setPosition(conf.width/2, conf.height/2)
 	self:addChild(bg)
 	
-	self.g = TexturePack.new("texturepacks/LevelScene.txt", "texturepacks/LevelScene.png", true)
+	self.g = TexturePack.new("texturepacks/levelScene.txt", "texturepacks/levelScene.png", true)
 	
 	local restart = Bitmap.new(self.g:getTextureRegion("restart.png"))
 	local restartButton = Button.new(restart)
