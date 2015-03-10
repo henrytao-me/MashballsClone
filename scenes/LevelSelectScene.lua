@@ -96,6 +96,8 @@ function LevelSelectScene:init()
      leftButton:addEventListener("click", self.prevPack, self)
 	end
 
+	self:addEventListener("enterEnd", self.onEnterEnd, self)
+
 end
 
 function LevelSelectScene:nextPack() 
@@ -112,3 +114,55 @@ function LevelSelectScene:prevPack()
          SceneManager.moveFromLeft, conf.easing)
      end
 end
+
+function LevelSelectScene:onMouseDown(event)
+     self.isFocus = true
+     self.startX = event.x
+     self.initX = self:getX()
+  self.prevX = event.x
+  event:stopPropagation()
+end
+
+function LevelSelectScene:onMouseMove(event)
+     if self.isFocus then
+       local dx = event.x - self.prevX
+       self:setX(self:getX() + dx)
+       self.prevX = event.x
+      event:stopPropagation()
+     end
+end
+
+function LevelSelectScene:onMouseUp(event)
+	if self.isFocus then
+	   local back = false
+	end
+	if self.startX < self.prevX - 10 then
+		if self.curPack > 1 then
+		     self:prevPack()
+		   else
+		     back = true
+		end
+	elseif self.startX > self.prevX + 10 then
+		if self.curPack <= #packs then
+		     self:nextPack()
+		   else
+		     back = true
+		end
+	else
+	     back = true
+	end
+
+	if back then
+     GTween.new(self, 0.1, {x = self.initX})
+	end
+	self.isFocus = false
+	event:stopPropagation()
+
+end
+
+function LevelSelectScene:onEnterEnd()
+     self:addEventListener(Event.MOUSE_DOWN, self.onMouseDown, self)
+     self:addEventListener(Event.MOUSE_MOVE, self.onMouseMove, self)
+     self:addEventListener(Event.MOUSE_UP, self.onMouseUp, self)
+end
+
